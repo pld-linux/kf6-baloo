@@ -5,17 +5,17 @@
 # TODO:
 # - runtime Requires if any
 
-%define		kdeframever	6.3
+%define		kdeframever	6.4
 %define		qtver		5.15.2
 %define		kfname		baloo
 Summary:	A  file indexing and file search framework
 Name:		kf6-%{kfname}
-Version:	6.3.0
+Version:	6.4.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	1ffc1c4a59177474f76a08ecf2192703
+# Source0-md5:	14a399c712be1555ccf3202c9393d12e
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= %{qtver}
@@ -116,6 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/balooshow6
 %attr(755,root,root) %{_prefix}/libexec/kf6/baloo_file
 %attr(755,root,root) %{_prefix}/libexec/kf6/baloo_file_extractor
+%{_libdir}/qt6/qml/org/kde/baloo/balooplugin.qmltypes
+%{_libdir}/qt6/qml/org/kde/baloo/experimental/baloomonitorplugin.qmltypes
+%{_libdir}/qt6/qml/org/kde/baloo/experimental/kde-qmlmodule.version
+%{_libdir}/qt6/qml/org/kde/baloo/kde-qmlmodule.version
 
 %files devel
 %defattr(644,root,root,755)
