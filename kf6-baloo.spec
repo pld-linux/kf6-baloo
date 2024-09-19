@@ -11,7 +11,7 @@
 Summary:	A  file indexing and file search framework
 Name:		kf6-%{kfname}
 Version:	6.6.0
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
@@ -77,6 +77,9 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 %install
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
+
+# not supported by glibc yet
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{kfname}6 --all-name --with-kde
 
