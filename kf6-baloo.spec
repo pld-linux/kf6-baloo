@@ -5,17 +5,17 @@
 # TODO:
 # - runtime Requires if any
 
-%define		kdeframever	6.7
+%define		kdeframever	6.8
 %define		qtver		5.15.2
 %define		kfname		baloo
 Summary:	A  file indexing and file search framework
 Name:		kf6-%{kfname}
-Version:	6.7.0
-Release:	2
+Version:	6.8.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	3c474230b7ba210a1e26bd049c14a501
+# Source0-md5:	4d2d84943c1461b94d362a803ed92cec
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= %{qtver}
