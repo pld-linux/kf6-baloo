@@ -2,11 +2,9 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-# TODO:
-# - runtime Requires if any
-
 %define		kdeframever	6.14
-%define		qtver		5.15.2
+%define		kf_ver		%{version}
+%define		qt_ver		6.7.0
 %define		kfname		baloo
 Summary:	A file indexing and file search framework
 Summary(pl.UTF-8):	Szkielet indeksowania i wyszukiwania plików
@@ -18,26 +16,46 @@ Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
 # Source0-md5:	9b13e46068bda372c5abc118e141316c
 URL:		https://kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel >= %{qtver}
-BuildRequires:	Qt6Network-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel >= %{qtver}
-%if %{with tests}
-BuildRequires:	Qt6Gui-devel >= %{qtver}
-BuildRequires:	Qt6Widgets-devel >= %{qtver}
-%endif
+BuildRequires:	Qt6Core-devel >= %{qt_ver}
+BuildRequires:	Qt6DBus-devel >= %{qt_ver}
+BuildRequires:	Qt6Gui-devel >= %{qt_ver}
+BuildRequires:	Qt6Network-devel >= %{qt_ver}
+BuildRequires:	Qt6Qml-devel >= %{qt_ver}
+BuildRequires:	Qt6Quick-devel >= %{qt_ver}
+BuildRequires:	Qt6Test-devel >= %{qt_ver}
+BuildRequires:	Qt6Widgets-devel >= %{qt_ver}
 BuildRequires:	cmake >= 3.16
-BuildRequires:	kf6-extra-cmake-modules >= 1.4.0
-BuildRequires:	kf6-kfilemetadata-devel >= %{version}
-BuildRequires:	kf6-kidletime-devel >= %{version}
-BuildRequires:	kf6-kio-devel >= %{version}
+BuildRequires:	gettext-tools
+BuildRequires:	kf6-extra-cmake-modules >= %{kf_ver}
+BuildRequires:	kf6-kconfig-devel >= %{kf_ver}
+BuildRequires:	kf6-kcoreaddons-devel >= %{kf_ver}
+BuildRequires:	kf6-kcrash-devel >= %{kf_ver}
+BuildRequires:	kf6-kdbusaddons-devel >= %{kf_ver}
+BuildRequires:	kf6-kfilemetadata-devel >= %{kf_ver}
+BuildRequires:	kf6-ki18n-devel >= %{kf_ver}
+BuildRequires:	kf6-kidletime-devel >= %{kf_ver}
+BuildRequires:	kf6-kio-devel >= %{kf_ver}
+BuildRequires:	kf6-solid-devel >= %{kf_ver}
 BuildRequires:	lmdb-devel
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	qt6-build >= %{qt_ver}
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	Qt6Core >= %{qt_ver}
+Requires:	Qt6DBus >= %{qt_ver}
+Requires:	Qt6Gui >= %{qt_ver}
+Requires:	Qt6Qml >= %{qt_ver}
 Requires:	kf6-dirs
+Requires:	kf6-kconfig >= %{kf_ver}
+Requires:	kf6-kcoreaddons >= %{kf_ver}
+Requires:	kf6-kcrash >= %{kf_ver}
+Requires:	kf6-kdbusaddons >= %{kf_ver}
+Requires:	kf6-kfilemetadata >= %{kf_ver}
+Requires:	kf6-ki18n >= %{kf_ver}
+Requires:	kf6-kidletime >= %{kf_ver}
+Requires:	kf6-kio >= %{kf_ver}
+Requires:	kf6-solid >= %{kf_ver}
 Conflicts:	kde4-baloo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -60,6 +78,8 @@ Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	Qt6Core-devel >= %{qt_ver}
+Requires:	kf6-kcoreaddons-devel >= %{kf_ver}
 Requires:	kf6-kfilemetadata-devel >= %{version}
 
 %description devel
@@ -89,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 # not supported by glibc yet
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
-%find_lang %{kfname}6 --all-name --with-kde
+%find_lang %{kfname}6 --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
