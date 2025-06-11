@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests		# build without tests
+%bcond_with	tests		# test suite
 
 # TODO:
 # - runtime Requires if any
@@ -8,7 +8,8 @@
 %define		kdeframever	6.14
 %define		qtver		5.15.2
 %define		kfname		baloo
-Summary:	A  file indexing and file search framework
+Summary:	A file indexing and file search framework
+Summary(pl.UTF-8):	Szkielet indeksowania i wyszukiwania plików
 Name:		kf6-%{kfname}
 Version:	6.14.0
 Release:	1
@@ -16,7 +17,7 @@ License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
 # Source0-md5:	9b13e46068bda372c5abc118e141316c
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= %{qtver}
 BuildRequires:	Qt6Network-devel >= %{qtver}
@@ -44,8 +45,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Baloo is the file indexing and file search framework for KDE.
 
 Baloo focuses on providing a very small memory footprint along with
-with extremely fast searching. It internally uses a mixture of sqlite
+with extremely fast searching. It internally uses a mixture of SQLite
 along with Xapian to store the file index.
+
+%description -l pl.UTF-8
+Baloo to szkielet indeksowania i wyszukiwania plików dla KDE.
+
+Skupia się na połączeniu bardzo małego zużycia pamięci wraz z bardzo
+szybkim wyszukiwaniem. Wewnętrznie używa połączenia rozwiązań SQLite i
+Xapian do przchowywania indeksu plików.
 
 %package devel
 Summary:	Header files for %{kfname} development
@@ -73,9 +81,9 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 
 %{?with_tests:%ninja_build -C build test}
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 # not supported by glibc yet
