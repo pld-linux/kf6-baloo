@@ -99,12 +99,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kfname}6.lang
 %defattr(644,root,root,755)
-/etc/xdg/autostart/baloo_file.desktop
-%{_datadir}/qlogging-categories6/baloo.categories
-%{_datadir}/dbus-1/interfaces/org.kde.baloo.file.indexer.xml
-%{_datadir}/dbus-1/interfaces/org.kde.baloo.fileindexer.xml
-%{_datadir}/dbus-1/interfaces/org.kde.baloo.main.xml
-%{_datadir}/dbus-1/interfaces/org.kde.baloo.scheduler.xml
+%doc README.md
+%attr(755,root,root) %{_bindir}/balooctl6
+%attr(755,root,root) %{_bindir}/baloosearch6
+%attr(755,root,root) %{_bindir}/balooshow6
+%attr(755,root,root) %{_libexecdir}/kf6/baloo_file
+%attr(755,root,root) %{_libexecdir}/kf6/baloo_file_extractor
 %attr(755,root,root) %{_libdir}/libKF6Baloo.so.*.*.*
 %ghost %{_libdir}/libKF6Baloo.so.6
 %attr(755,root,root) %{_libdir}/libKF6BalooEngine.so.*.*.*
@@ -114,23 +114,24 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kio/tags.so
 %attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kio/timeline.so
 %dir %{_libdir}/qt6/qml/org/kde/baloo
-%dir %{_libdir}/qt6/qml/org/kde/baloo/experimental
-%{_libdir}/qt6/qml/org/kde/baloo/qmldir
-%{_libdir}/qt6/qml/org/kde/baloo/experimental/qmldir
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/baloo/libbalooplugin.so
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/baloo/experimental/libbaloomonitorplugin.so
-%{_datadir}/dbus-1/interfaces/org.kde.BalooWatcherApplication.xml
-%{_datadir}/qlogging-categories6/baloo.renamecategories
-%{systemduserunitdir}/kde-baloo.service
-%attr(755,root,root) %{_bindir}/balooctl6
-%attr(755,root,root) %{_bindir}/baloosearch6
-%attr(755,root,root) %{_bindir}/balooshow6
-%attr(755,root,root) %{_prefix}/libexec/kf6/baloo_file
-%attr(755,root,root) %{_prefix}/libexec/kf6/baloo_file_extractor
 %{_libdir}/qt6/qml/org/kde/baloo/balooplugin.qmltypes
+%{_libdir}/qt6/qml/org/kde/baloo/kde-qmlmodule.version
+%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/baloo/libbalooplugin.so
+%{_libdir}/qt6/qml/org/kde/baloo/qmldir
+%dir %{_libdir}/qt6/qml/org/kde/baloo/experimental
 %{_libdir}/qt6/qml/org/kde/baloo/experimental/baloomonitorplugin.qmltypes
 %{_libdir}/qt6/qml/org/kde/baloo/experimental/kde-qmlmodule.version
-%{_libdir}/qt6/qml/org/kde/baloo/kde-qmlmodule.version
+%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/baloo/experimental/libbaloomonitorplugin.so
+%{_libdir}/qt6/qml/org/kde/baloo/experimental/qmldir
+%{_datadir}/dbus-1/interfaces/org.kde.BalooWatcherApplication.xml
+%{_datadir}/dbus-1/interfaces/org.kde.baloo.file.indexer.xml
+%{_datadir}/dbus-1/interfaces/org.kde.baloo.fileindexer.xml
+%{_datadir}/dbus-1/interfaces/org.kde.baloo.main.xml
+%{_datadir}/dbus-1/interfaces/org.kde.baloo.scheduler.xml
+%{_datadir}/qlogging-categories6/baloo.categories
+%{_datadir}/qlogging-categories6/baloo.renamecategories
+%{systemduserunitdir}/kde-baloo.service
+/etc/xdg/autostart/baloo_file.desktop
 
 %files devel
 %defattr(644,root,root,755)
