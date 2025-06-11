@@ -10,7 +10,7 @@ Summary:	A file indexing and file search framework
 Summary(pl.UTF-8):	Szkielet indeksowania i wyszukiwania plików
 Name:		kf6-%{kfname}
 Version:	6.14.0
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
@@ -56,7 +56,10 @@ Requires:	kf6-ki18n >= %{kf_ver}
 Requires:	kf6-kidletime >= %{kf_ver}
 Requires:	kf6-kio >= %{kf_ver}
 Requires:	kf6-solid >= %{kf_ver}
+Provides:	kf5-baloo-service = %{version}-%{release}
+Obsoletes:	kf5-baloo-service < 6
 Conflicts:	kde4-baloo
+Conflicts:	kf5-baloo < 5.116.0-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
