@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.18
+%define		kdeframever	6.19
 %define		kf_ver		%{version}
 %define		qt_ver		6.7.0
 %define		kfname		baloo
 Summary:	A file indexing and file search framework
 Summary(pl.UTF-8):	Szkielet indeksowania i wyszukiwania plików
 Name:		kf6-%{kfname}
-Version:	6.18.0
+Version:	6.19.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	7cd2badebc8e953594e83d7be6cac570
+# Source0-md5:	79ef00062e9ffed8673790a2a4e3b06b
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6DBus-devel >= %{qt_ver}
@@ -129,23 +129,23 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/balooshow6
 %attr(755,root,root) %{_libexecdir}/kf6/baloo_file
 %attr(755,root,root) %{_libexecdir}/kf6/baloo_file_extractor
-%attr(755,root,root) %{_libdir}/libKF6Baloo.so.*.*.*
+%{_libdir}/libKF6Baloo.so.*.*.*
 %ghost %{_libdir}/libKF6Baloo.so.6
-%attr(755,root,root) %{_libdir}/libKF6BalooEngine.so.*.*.*
+%{_libdir}/libKF6BalooEngine.so.*.*.*
 %ghost %{_libdir}/libKF6BalooEngine.so.6
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kded/baloosearchmodule.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kio/baloosearch.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kio/tags.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kio/timeline.so
+%{_libdir}/qt6/plugins/kf6/kded/baloosearchmodule.so
+%{_libdir}/qt6/plugins/kf6/kio/baloosearch.so
+%{_libdir}/qt6/plugins/kf6/kio/tags.so
+%{_libdir}/qt6/plugins/kf6/kio/timeline.so
 %dir %{_libdir}/qt6/qml/org/kde/baloo
 %{_libdir}/qt6/qml/org/kde/baloo/balooplugin.qmltypes
 %{_libdir}/qt6/qml/org/kde/baloo/kde-qmlmodule.version
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/baloo/libbalooplugin.so
+%{_libdir}/qt6/qml/org/kde/baloo/libbalooplugin.so
 %{_libdir}/qt6/qml/org/kde/baloo/qmldir
 %dir %{_libdir}/qt6/qml/org/kde/baloo/experimental
 %{_libdir}/qt6/qml/org/kde/baloo/experimental/baloomonitorplugin.qmltypes
 %{_libdir}/qt6/qml/org/kde/baloo/experimental/kde-qmlmodule.version
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/baloo/experimental/libbaloomonitorplugin.so
+%{_libdir}/qt6/qml/org/kde/baloo/experimental/libbaloomonitorplugin.so
 %{_libdir}/qt6/qml/org/kde/baloo/experimental/qmldir
 %{_datadir}/dbus-1/interfaces/org.kde.BalooWatcherApplication.xml
 %{_datadir}/dbus-1/interfaces/org.kde.baloo.file.indexer.xml
