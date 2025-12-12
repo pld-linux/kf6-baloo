@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.20
+%define		kdeframever	6.21
 %define		kf_ver		%{version}
 %define		qt_ver		6.7.0
 %define		kfname		baloo
 Summary:	A file indexing and file search framework
 Summary(pl.UTF-8):	Szkielet indeksowania i wyszukiwania plików
 Name:		kf6-%{kfname}
-Version:	6.20.0
+Version:	6.21.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	a7d95c808af8e6d2cb2514c1cdc7be31
+# Source0-md5:	e3a71c3bc7c64285b59b686fcf2d3bac
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6DBus-devel >= %{qt_ver}
