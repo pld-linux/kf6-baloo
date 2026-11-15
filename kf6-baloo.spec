@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.31
+%define		kdeframever	6.32
 %define		kf_ver		%{version}
 %define		qt_ver		6.7.0
 %define		kfname		baloo
 Summary:	A file indexing and file search framework
 Summary(pl.UTF-8):	Szkielet indeksowania i wyszukiwania plików
 Name:		kf6-%{kfname}
-Version:	6.31.0
-Release:	2
+Version:	6.32.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	b691e4a33f981ba5f0ee7ad758841eda
+# Source0-md5:	e3c7f3c05d257764be79545f457e293e
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6DBus-devel >= %{qt_ver}
@@ -157,6 +157,11 @@ rm -rf $RPM_BUILD_ROOT
 %{systemduserunitdir}/kde-baloo.service
 /etc/xdg/autostart/baloo_file.desktop
 %{_datadir}/config.kcfg/baloosettings.kcfg
+%{systemduserunitdir}/kde-baloo-idle-monitor.service
+%attr(755,root,root) %{_prefix}/libexec/kf6/baloo_idle_monitor
+%{_datadir}/dbus-1/services/org.kde.baloo.service
+%{_datadir}/dbus-1/services/org.kde.baloo_idle_monitor.service
+
 
 %files devel
 %defattr(644,root,root,755)
